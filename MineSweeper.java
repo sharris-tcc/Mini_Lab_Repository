@@ -54,6 +54,7 @@ public class MineSweeper {
                 }
                 catch (InputMismatchException e)
                 {
+		    input.nextLine();
                     System.out.println("Invalid Entry...Enter a number only");
                 }
                 catch (Exception e)
