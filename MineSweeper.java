@@ -13,11 +13,13 @@ public class MineSweeper {
     public MineSweeper() {
         Scanner input = new Scanner(System.in);
 
+        // Prompt user for number of rows and columns
         System.out.print("How many rows would you like: ");
         int r = input.nextInt();
         System.out.print("How many columns would you like: ");
         int c = input.nextInt();
 
+        // Initialize game board using input values
         board = new int[r][c];
         mineCount = 0;
         gameBoard = new char[r][c];
@@ -40,6 +42,7 @@ public class MineSweeper {
                     System.out.println("Pick coordinates: ");
                     System.out.print("row: ");
                     r = input.nextInt();
+                    // Throw exception if input exceeds row or column size
                     if (r >= displayBoard.length || r < 0)
                     {
                         throw new Exception("Invalid Entry...Enter number between 0 and " + displayBoard.length);
@@ -52,9 +55,10 @@ public class MineSweeper {
 
                     invalidMove = false;
                 }
+                // Catch invalid input.  Must be an integer only
                 catch (InputMismatchException e)
                 {
-		    input.nextLine();
+		            input.nextLine();
                     System.out.println("Invalid Entry...Enter a number only");
                 }
                 catch (Exception e)
@@ -77,6 +81,12 @@ public class MineSweeper {
         }while(!CheckBoard());
 
     }
+
+    /**
+     * Mines are generated using random numbers
+     * If number is <= square root of total spaces
+     * element is considered a mine
+     */
     public void GenerateMines()
     {
         Random random = new Random();
@@ -204,6 +214,7 @@ public class MineSweeper {
                             displayBoard[r + i][c + j] = gameBoard[r + i][c + j];
                             spaceFound = true;
                             spacesFound++;
+                            // Call recursive until a number or mine is found
                             if(displayBoard[r + i][c + j] == ' ')
                             {
                                 ChangeBoard(r+i,c+j);
