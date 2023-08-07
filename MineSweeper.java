@@ -13,13 +13,11 @@ public class MineSweeper {
     public MineSweeper() {
         Scanner input = new Scanner(System.in);
 
-        // Prompt user for number of rows and columns
         System.out.print("How many rows would you like: ");
         int r = input.nextInt();
         System.out.print("How many columns would you like: ");
         int c = input.nextInt();
 
-        // Initialize game board using input values
         board = new int[r][c];
         mineCount = 0;
         gameBoard = new char[r][c];
@@ -58,7 +56,7 @@ public class MineSweeper {
                 // Catch invalid input.  Must be an integer only
                 catch (InputMismatchException e)
                 {
-		            input.nextLine();
+			input.nextLine();
                     System.out.println("Invalid Entry...Enter a number only");
                 }
                 catch (Exception e)
@@ -82,11 +80,6 @@ public class MineSweeper {
 
     }
 
-    /**
-     * Mines are generated using random numbers
-     * If number is <= square root of total spaces
-     * element is considered a mine
-     */
     public void GenerateMines()
     {
         Random random = new Random();
