@@ -40,7 +40,6 @@ public class MineSweeper {
                     System.out.println("Pick coordinates: ");
                     System.out.print("row: ");
                     r = input.nextInt();
-                    // Throw exception if input exceeds row or column size
                     if (r >= displayBoard.length || r < 0)
                     {
                         throw new Exception("Invalid Entry...Enter number between 0 and " + displayBoard.length);
@@ -53,7 +52,6 @@ public class MineSweeper {
 
                     invalidMove = false;
                 }
-                // Catch invalid input.  Must be an integer only
                 catch (InputMismatchException e)
                 {
 			input.nextLine();
