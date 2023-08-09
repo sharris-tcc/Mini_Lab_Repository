@@ -13,11 +13,12 @@ public class MineSweeper {
     public MineSweeper() {
         Scanner input = new Scanner(System.in);
 
+        // Prompting user for row/column count
         System.out.print("How many rows would you like: ");
         int r = input.nextInt();
         System.out.print("How many columns would you like: ");
         int c = input.nextInt();
-
+        // Initialize 2D-arrays using row/column count
         board = new int[r][c];
         mineCount = 0;
         gameBoard = new char[r][c];
@@ -42,11 +43,15 @@ public class MineSweeper {
                     r = input.nextInt();
                     if (r >= displayBoard.length || r < 0)
                     {
+                        // If row input is out of range for the array
                         throw new Exception("Invalid Entry...Enter number between 0 and " + displayBoard.length);
                     }
                     System.out.print("column: ");
                     c = input.nextInt();
-                    if (c >= displayBoard[0].length || c < 0) {
+                    if (c >= displayBoard[0].length || c < 0)
+                    {
+
+                        // If column input is out of range for the array
                         throw new Exception("Invalid Entry...Enter number between 0 and " + displayBoard[0].length);
                     }
 
@@ -54,7 +59,8 @@ public class MineSweeper {
                 }
                 catch (InputMismatchException e)
                 {
-			input.nextLine();
+                    // If input is not a number
+			        input.nextLine();
                     System.out.println("Invalid Entry...Enter a number only");
                 }
                 catch (Exception e)
